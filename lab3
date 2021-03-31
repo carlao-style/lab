@@ -1,0 +1,140 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace exercicio_05
+{
+    class Aperitivo:ItemMenu
+    {
+        public Aperitivo(string nome,float preco)
+        {
+            this.Nome = nome;
+            this.Preco = preco;
+        }
+        public override void ImprimirPreco(float preco)
+        {
+            Console.WriteLine("o preço do apretivo e "+ preco);
+            Console.ReadLine();
+        }
+        public override void ImprimirNome(string nome)
+        {
+            Console.WriteLine("o nome do aperitivo e " +  nome);
+            Console.ReadLine();
+        }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace exercicio_05
+{
+    class Bebida:ItemMenu
+    {
+        float precopequno, precomedio, precogrande;
+        string pequena = "pequena", media = "media", grande = "grande";
+
+
+        public string Pequena { get => pequena; }
+        public string Media { get => media; }
+        public string Grande { get => grande; }
+        public float Precopequno { get => precopequno; set => precopequno = value; }
+        public float Precomedio { get => precomedio; set => precomedio = value; }
+        public float Precogrande { get => precogrande; set => precogrande = value; }
+
+        public Bebida(string nome ,float precopequno, float precomedio, float precogrande)
+        {
+            this.Nome = nome;
+            this.Precopequno = precopequno;
+            this.Precomedio = precomedio;
+            this.Precogrande = precogrande;
+        }
+        public  void ImprimirPreco(string tipodebebida, float preco)
+        {
+            Console.WriteLine("o preço da bebida " + tipodebebida + " e " + preco) ;
+            Console.ReadLine();
+        }
+        public override void ImprimirNome(string nome)
+        {
+            Console.WriteLine("o nome da bebida e " + nome);
+            Console.ReadLine();
+        }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace exercicio_05
+{
+    class ItemMenu
+    {
+        private string nome;
+        private float preco;
+
+        public string Nome { get => nome; set => nome = value; }
+        public float Preco { get => preco; set => preco = value; }
+
+        public virtual void  ImprimirPreco(float preco)
+        {
+            Console.WriteLine("o preço deve ser consultado na clase propria");
+        }
+        public virtual void ImprimirNome(string nome)
+        {
+            Console.WriteLine("o nome deve ser consultado na clase propria");
+        }
+    }
+
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace exercicio_05
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Aperitivo cem_coxinhas = new Aperitivo(" um cento de  coxinha",25.5f);
+            Aperitivo porcaodebisteca = new Aperitivo("uma porção de bisteca com mandioca", 50);
+            Bebida coca = new Bebida("coca cola", 5, 7, 10);
+            Bebida sucodeuva = new Bebida("Suco de uva", 3, 5, 7);
+            Bebida vitaminadeabacate = new Bebida("Vitamina de abacate", 6, 9, 12);
+            cem_coxinhas.ImprimirNome(cem_coxinhas.Nome);
+            cem_coxinhas.ImprimirPreco(cem_coxinhas.Preco);
+            porcaodebisteca.ImprimirNome(porcaodebisteca.Nome);
+            porcaodebisteca.ImprimirPreco(porcaodebisteca.Preco);
+            coca.ImprimirNome(coca.Nome);
+            coca.ImprimirPreco(coca.Pequena,coca.Precopequno);
+            coca.ImprimirPreco(coca.Media, coca.Precomedio);
+            coca.ImprimirPreco(coca.Grande, coca.Precogrande);
+            sucodeuva.ImprimirNome(sucodeuva.Nome);
+            sucodeuva.ImprimirPreco(sucodeuva.Pequena, sucodeuva.Precopequno);
+            sucodeuva.ImprimirPreco(sucodeuva.Media, sucodeuva.Precomedio);
+            sucodeuva.ImprimirPreco(sucodeuva.Grande, sucodeuva.Precogrande);
+            vitaminadeabacate.ImprimirNome(vitaminadeabacate.Nome);
+            vitaminadeabacate.ImprimirPreco(vitaminadeabacate.Pequena, vitaminadeabacate.Precopequno);
+            vitaminadeabacate.ImprimirPreco(vitaminadeabacate.Media, vitaminadeabacate.Precomedio);
+            vitaminadeabacate.ImprimirPreco(vitaminadeabacate.Grande, vitaminadeabacate.Precogrande);
+            Console.WriteLine("obrigado pela preferencia");
+            Console.ReadLine();
+
+
+
+
+        }
+    }
+}
+
